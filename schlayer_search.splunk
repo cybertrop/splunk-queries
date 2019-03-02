@@ -4,5 +4,6 @@
 index=* /private/tmp
 | regex TargetFileName="\/tmp\/[a-fA-F0-9]+-[0-9]+-[a-fA-F0-9]+-[a-fA-F0-9]+-[a-fA-F0-9]+\/[0-9]\/[a-fA-F0-9]+-[a-fA-F0-9]+-[a-fA-F0-9]+-[a-fA-F0-9]+-[a-fA-F0-9]+\/"
 | transaction host cookie maxspan=30s maxpause=5s 
-| stats count by TargetFileName
+| stats count by ComputerName
 | sort - count
+| fillnull value="-"
