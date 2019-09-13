@@ -17,4 +17,4 @@ aid=e42a670c3d2644027bd7acdd91258f8e name!=TerminateProcessMac name!=CreateProce
 | eval end =+600
 | where _time > begin AND _time < end
 | table _time name ImageFileName CommandLine TargetFileName detectionCount BootArgs 
-| sort 0 -_time
+| sort -_time
