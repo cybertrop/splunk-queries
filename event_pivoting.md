@@ -7,10 +7,10 @@ transcation. Then table it out and sort it based on time.
 | table _time, ComputerName,  FilePath, FileName, CommandLine, aip, event_simpleName, DomainName, LocalAddressIP4, DetectDescription, DnsRequests{}.DomainName
 | sort _time
 | fillnull value="-" 
-
+```
 Next we take the AID field from the output of the first script
 and use that AID to pivot around +/- 10 minutes around the time of event
-
+```
 aid=e42a670c3d2644027bd7acdd91258f8e name!=TerminateProcessMac name!=CreateProcess* earliest=-30d 
 | eval timestamp= /1000
 | eval begin =-600
@@ -18,3 +18,4 @@ aid=e42a670c3d2644027bd7acdd91258f8e name!=TerminateProcessMac name!=CreateProce
 | where _time > begin AND _time < end
 | table _time name ImageFileName CommandLine TargetFileName detectionCount BootArgs 
 | sort -_time
+```
