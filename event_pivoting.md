@@ -6,7 +6,7 @@ transcation. Then table it out and sort it based on time.
 | transaction host cookie maxspan=30s maxpause=5s 
 | table _time, ComputerName,  FilePath, FileName, CommandLine, aip, event_simpleName, DomainName, LocalAddressIP4, DetectDescription, DnsRequests{}.DomainName
 | sort _time
-| fillnull value="-" ```
+| fillnull value="-" 
 
 Next we take the AID field from the output of the first script
 and use that AID to pivot around +/- 10 minutes around the time of event
