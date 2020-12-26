@@ -2,7 +2,7 @@
 # We make it a little more efficient and less robust by piping everything into a 
 # transcation. Then table it out and sort it based on time. 
 
-earliest=-1w index=* evilcorp.com 
+`earliest=-1w` index=* evilcorp.com 
 | transaction host cookie maxspan=30s maxpause=5s 
 | table _time, ComputerName,  FilePath, FileName, CommandLine, aip, event_simpleName, DomainName, LocalAddressIP4, DetectDescription, DnsRequests{}.DomainName
 | sort _time
