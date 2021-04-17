@@ -1,3 +1,4 @@
+(fyi This also works on Crowdstrike event searches) 
 This first script is a typical splunk query to look for any activity to evilcorp.com 
 We make it a little more efficient and less robust by piping everything into a 
 transcation. Then table it out and sort it based on time. 
@@ -9,7 +10,7 @@ earliest=-1w index=* evilcorp.com
 | sort _time
 | fillnull value="-" 
 ```
-Next we take the AID field from the output of the first script
+Next we take the AID field from the output of the first script 
 and use that AID to pivot around +/- 10 minutes around the time of event
 ```
 aid=e42a670c3d2644027bd7acdd91258f8e name!=TerminateProcessMac name!=CreateProcess* earliest=-30d 
